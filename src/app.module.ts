@@ -11,7 +11,7 @@ import { UsersModule } from './users/users.module';
     GraphQLModule.forRoot({
       autoSchemaFile: 'schema.gql'
     }),
-    MongooseModule.forRoot('mongodb://localhost/nails-booking'),
+    MongooseModule.forRoot('mongodb://admin:admin@localhost:27017'),
     UsersModule
   ],
   controllers: [AppController],
