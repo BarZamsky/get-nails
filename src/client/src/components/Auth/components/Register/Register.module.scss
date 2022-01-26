@@ -1,0 +1,47 @@
+.container {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  .title {
+    margin-top: 20px;
+    font-family: Roboto-Medium;
+    font-size: 22px;
+  }
+  .inputs {
+    margin-top: 20px;
+    width: 80%;
+    .inputField {
+      width: 100%;
+      position: relative;
+      margin-bottom: 20px;
+      -webkit-animation: bounce 0.6s ease-out;
+      animation: bounce 0.6s ease-out;
+
+      span {
+        position: absolute;
+        left: 0;
+        top: 0;
+        color: #333;
+        height: 100%;
+        border-right: 1px solid #666666;
+        text-align: center;
+        width: 40px;
+        align-items: center;
+        display: flex;
+        justify-content: center;
+      }
+
+      input {
+        width: 100%;
+        padding: 8px 10px 9px 50px;
+        height: 40px;
+        border: 1px solid #666666;
+        font-size: 15px;
+        font-family: Roboto-Regular;
+        box-sizing: border-box;
+        outline: none;
+        border-radius: 8px;
+      }
+    }
+  }
+}

@@ -1,0 +1,46 @@
+.container {
+  align-items: center;
+  display: flex;
+  flex-flow: column;
+  height: 100vh;
+  .image {
+    display: block;
+    object-fit: cover;
+    width: 200px;
+    margin-top: 20px;
+  }
+  .title {
+    font-family: LoveLikeThis;
+    margin-top: 40px;
+    font-size: 50px;
+  }
+  .subTitle {
+    margin-top: 50px;
+    font-family: Roboto-Bold;
+    font-size: 18px;
+    line-height: 24px;
+    width: 40%;
+    text-align: center;
+  }
+  .button {
+    cursor: pointer;
+    margin-top: 50px;
+    outline: none;
+    width: 180px;
+    border: none;
+    border-radius: 18px;
+    padding: 10px;
+    box-sizing: border-box;
+    font-family: Roboto-Medium;
+    background-color: rgb(241, 118, 138, 1);
+    color: #ffffff;
+    font-size: 16px;
+  }
+  .registeredUser {
+    margin-top: 4px;
+    color: #666666;
+    font-family: Roboto-Regular;
+    font-size: 13px;
+    cursor: pointer;
+  }
+}
