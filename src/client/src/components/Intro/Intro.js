@@ -23,10 +23,8 @@ const Intro = () => {
       >
         Get Started
       </button>
-      <div className={styles.registeredUser}
-           onClick={onLoginClickedHandler}
-      >
-        Already have an account?
+      <div className={styles.registeredUser}>
+        Already have an account? <div className={styles.login} onClick={onLoginClickedHandler}>Login</div>
       </div>
     </div>
   )
