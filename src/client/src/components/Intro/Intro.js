@@ -6,7 +6,7 @@ const Intro = () => {
   const history = useHistory();
 
   const onGetStartedClickHandler = () => {
-    history.push('/register')
+    history.push('/create-account')
   }
 
   const onLoginClickedHandler = () => {

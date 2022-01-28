@@ -7,10 +7,13 @@ import { Model } from 'mongoose';
 
 import { CreateUserDto } from './dtos/create-user.dto';
 import { User } from './interfaces/user.interface';
+import { Studio } from './interfaces/studio.interface';
+import { CreateStudioDto } from "./dtos/create-studio-dto";
 
 @Injectable()
 export class AuthService {
   constructor(@InjectModel('User') private userModel: Model<User>,
+              @InjectModel('Studio') private studioModel: Model<Studio>,
               private jwtService: JwtService
   ) {}
 
@@ -30,24 +33,54 @@ export class AuthService {
     }
   }
 
+  async signupStudio(createStudioDto: CreateStudioDto): Promise<void> {
+    const { password } = createStudioDto;
+    const hashedPassword = await bcrypt.hash(password, 10);
+    createStudioDto['password'] = hashedPassword;
+    const user = new this.studioModel(createStudioDto);
+
+    try {
+      await user.save();
+    } catch (error) {
+      if (error.code === 11000) {
+        throw new ConflictException('Studio already exists');
+      }
+      throw error;
+    }
+  }
+
   async login(user: User) {
-    const payload = { userId: user._id };
+    const payload = { userId: user._id, type: user.type };
     return {
       access_token: this.jwtService.sign(payload),
+      type: user.type
     };
   }
 
-  async validateUser(email: string, password: string): Promise<User> {
-    const user = await this.userModel.findOne({ email });
+  async validateUser(email: string, password: string): Promise<any> {
+    let userData = await this.userModel.findOne({ email });
+    let studioData = await this.studioModel.findOne({ email });
 
-    if (!user) {
+    if (!userData && !studioData) {
       return null;
     }
 
-    const valid = await bcrypt.compare(password, user.password);
-    if (valid) {
-      return user;
+    let dataPassword, objToReturn;
+    if (userData) {
+      userData.type = 'user'
+      dataPassword = userData.password;
+      objToReturn = userData;
+    } else {
+      studioData.type = 'studio'
+      dataPassword = studioData.password;
+      objToReturn = studioData;
     }
+
+    const valid = await bcrypt.compare(password, dataPassword);
+    if (valid) {
+      return objToReturn;
+    }
+
     return null;
   }
 }

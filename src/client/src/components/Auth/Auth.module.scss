@@ -1,0 +1,35 @@
+.container {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  .image {
+    display: block;
+    object-fit: cover;
+    width: 100px;
+    margin-top: 20px;
+  }
+  .title {
+    margin-top: 20px;
+    font-family: Roboto-Medium;
+    font-size: 22px;
+  }
+  .subTitle {
+    margin-top: 20px;
+    font-family: Roboto-Regular;
+    font-size: 18px;
+  }
+  .button {
+    cursor: pointer;
+    margin-top: 70px;
+    outline: none;
+    width: 230px;
+    border: none;
+    border-radius: 22px;
+    padding: 12px;
+    box-sizing: border-box;
+    font-family: Roboto-Medium;
+    background-color: rgb(241, 118, 138, 1);
+    color: #ffffff;
+    font-size: 18px;
+  }
+}

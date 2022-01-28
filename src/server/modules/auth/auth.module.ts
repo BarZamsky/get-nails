@@ -9,11 +9,12 @@ import { AuthService } from './auth.service';
 import { UserSchema } from './schemas/user.schema';
 import { JwtStrategy } from './strategies/jwt.strategy';
 import { LocalStrategy } from './strategies/local.strategy';
+import { StudioSchema } from "./schemas/studio.schema";
 
 @Module({
   imports: [
     ConfigModule.forRoot(),
-    MongooseModule.forFeature([{ name: 'User', schema: UserSchema }]),
+    MongooseModule.forFeature([{ name: 'User', schema: UserSchema }, { name: 'Studio', schema: StudioSchema }]),
     PassportModule,
     JwtModule.register({
       secret: process.env.JWT_SECRET,
