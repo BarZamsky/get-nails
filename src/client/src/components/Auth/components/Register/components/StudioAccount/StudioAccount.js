@@ -3,8 +3,12 @@ import axios from "axios";
 import styles from "../RegisterForm.module.scss";
 import Input from "../../../UI/Input";
 import { LockOutlined, MailOutline, HomeOutlined, PhoneOutlined } from "@material-ui/icons";
+import Button from "../../../../../UI/Button";
+import { useHistory } from "react-router-dom";
 
 const StudioAccount = () => {
+  const history = useHistory();
+
   const [email, setEmail] = useState('');
   const [phone, setPhone] = useState('');
   const [password, setPassword] = useState('');
@@ -21,6 +25,10 @@ const StudioAccount = () => {
     axios.post('http://localhost:5000/auth/studio-signup', body)
       .then(res => {
         console.log(res)
+        if (res.status === 201) {
+          // TODO: add confirmation message
+          history.push('/login')
+        }
       })
       .catch(e => console.log(e && e.message))
   }
@@ -55,11 +63,7 @@ const StudioAccount = () => {
                icon={<PhoneOutlined/>}
         />
       </div>
-      <button className={styles.button}
-              onClick={onClickHandler}
-      >
-        Create Account
-      </button>
+      <Button onClick={onClickHandler} buttonText="Create Account" />
     </div>
 
   )

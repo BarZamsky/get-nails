@@ -3,8 +3,12 @@ import styles from "../Register/components/RegisterForm.module.scss";
 import Input from "../UI/Input";
 import { LockOutlined, MailOutline } from "@material-ui/icons";
 import axios from "axios";
+import Button from "../../../UI/Button";
+import { useHistory } from "react-router-dom";
 
 const Login = () => {
+  const history = useHistory();
+
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
@@ -15,6 +19,9 @@ const Login = () => {
         const token = res && res.data && res.data.access_token;
         localStorage.setItem('token', token);
         localStorage.setItem('type', res.data.type);
+        if (res.data.type === 'studio') {
+          history.push('/studio-main')
+        }
       })
       .catch(e => console.log(e && e.message))
   }
@@ -37,11 +44,7 @@ const Login = () => {
                icon={<LockOutlined/>}
         />
       </div>
-      <button className={styles.button}
-              onClick={onClickHandler}
-      >
-        Login
-      </button>
+      <Button onClick={onClickHandler} buttonText="Login" />
     </div>
   )
 }

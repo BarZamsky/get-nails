@@ -5,6 +5,7 @@ import Register from "./components/Auth/components/Register";
 import UserAccount from "./components/Auth/components/Register/components/UserAccount";
 import StudioAccount from "./components/Auth/components/Register/components/StudioAccount";
 import Login from "./components/Auth/components/Login";
+import StudioMainPage from "./components/StudioMainPage";
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
         <Route path="/create-user-account" exact component={UserAccount} />
         <Route path="/create-studio-account" exact component={StudioAccount} />
         <Route path="/login" exact component={Login} />
+        <Route path="/studio-main" exact component={StudioMainPage} />
       </Switch>
     </Router>
   )

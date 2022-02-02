@@ -3,8 +3,10 @@ import { MongooseModule } from '@nestjs/mongoose';
 import { AppController } from './app.controller';
 import { ConfigModule } from "@nestjs/config";
 import { AppService } from './app.service';
-import { AuthModule } from "./modules/auth/auth.module";
-import { UsersModule } from "./modules/users/users.module";
+import { AuthModule } from "./src/modules/auth/auth.module";
+import { UsersModule } from "./src/modules/users/users.module";
+import { StudiosController } from './src/modules/studios/studios.controller';
+import { StudiosModule } from './src/modules/studios/studios.module';
 
 @Module({
   imports: [
@@ -13,9 +15,10 @@ import { UsersModule } from "./modules/users/users.module";
     }),
     MongooseModule.forRoot(`${process.env.MONGO_URL}/${process.env.MONGO_COLLECTION}`),
     AuthModule,
-    UsersModule
+    UsersModule,
+    StudiosModule
   ],
-  controllers: [AppController],
+  controllers: [AppController, StudiosController],
   providers: [AppService],
 })
 export class AppModule {}

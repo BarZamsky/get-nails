@@ -1,6 +1,7 @@
 import React from "react";
 import styles from './Intro.module.scss'
 import { useHistory } from "react-router-dom";
+import Button from "../UI/Button";
 
 const Intro = () => {
   const history = useHistory();
@@ -18,11 +19,7 @@ const Intro = () => {
       <div className={styles.title}>Get-Nails</div>
       <img className={styles.image} src={require('../../assets/images/neil-main.png')} alt="img"/>
       <div className={styles.subTitle}>Book Your Favourite Nail Artist</div>
-      <button className={styles.button}
-              onClick={onGetStartedClickHandler}
-      >
-        Get Started
-      </button>
+      <Button onClick={onGetStartedClickHandler} buttonText="Get Started" />
       <div className={styles.registeredUser}>
         Already have an account? <div className={styles.login} onClick={onLoginClickedHandler}>Login</div>
       </div>

@@ -9,6 +9,7 @@ import {
 import axios from "axios";
 import Input from "../../../UI/Input";
 import Select from "../../../UI/Select";
+import Button from "../../../../../UI/Button";
 
 const UserAccount = () => {
   const [email, setEmail] = useState('');
@@ -78,11 +79,7 @@ const UserAccount = () => {
         />
         <Select onChange={e => setCity(e.target.value)}/>
       </div>
-      <button className={styles.button}
-              onClick={onClickHandler}
-      >
-        Create Account
-      </button>
+      <Button onClick={onClickHandler} buttonText="Create Account" />
     </div>
   )
 }
